@@ -16,7 +16,11 @@ const config: Config = {
 	plugins: [
 		nextui(),
 		iconsPlugin({
-			collections: getIconCollections(["simple-icons", "lucide"]),
+			collections: getIconCollections([
+				"simple-icons",
+				"lucide",
+				"fa6-solid",
+			]),
 		}),
 	],
 }

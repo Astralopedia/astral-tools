@@ -27,7 +27,7 @@ export default function NavBar() {
 	]
 
 	return (
-		<Navbar onMenuOpenChange={setIsMenuOpen} isBordered>
+		<Navbar onMenuOpenChange={setIsMenuOpen} isBordered isBlurred>
 			<NavbarContent>
 				<NavbarMenuToggle
 					aria-label={isMenuOpen ? "Close menu" : "Open menu"}

@@ -1,5 +1,6 @@
 "use client"
 
+import flags from "@/app/tools/flags/flags"
 import {
 	Button,
 	Input,
@@ -13,7 +14,6 @@ import {
 import copy from "copy-to-clipboard"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
-import flags from "./flags.json"
 
 function generateFlag(
 	filename: string,

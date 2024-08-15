@@ -12,7 +12,7 @@ export default async function Footer() {
 		<footer className='w-full bg-black border-divider border-t text-sm md:text-base'>
 			<div className='p-10'>
 				<div className='grid place-content-center grid-cols-2 lg:grid-cols-4 text-center'>
-					<div className='grid place-items-center col-start-1 col-end-4 lg:col-start-1 lg:col-end-2 lg:grid-rows-5'>
+					<div className='grid place-items-center col-start-1 col-end-4 lg:col-start-1 lg:col-end-2 lg:grid-rows-5 my-3'>
 						<Image
 							src={AstralToolsLogo}
 							alt='logo'

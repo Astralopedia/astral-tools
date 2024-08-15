@@ -65,7 +65,7 @@ export default function NavBar() {
 						color='foreground'
 						target='_blank'
 						href='https://discord.gg/createastral'>
-						<i className='i-simple-icons-discord size-6'></i>
+						<i className='i-fa6-brands-discord size-6'></i>
 					</Link>
 				</NavbarItem>
 				<NavbarItem className='cursor-pointer'>
@@ -73,7 +73,7 @@ export default function NavBar() {
 						color='foreground'
 						target='_blank'
 						href='https://github.com/Astralopedia/astral-tools'>
-						<i className='i-simple-icons-github size-6'></i>
+						<i className='i-fa6-brands-github size-6'></i>
 					</Link>
 				</NavbarItem>
 			</NavbarContent>

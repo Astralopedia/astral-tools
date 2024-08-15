@@ -8,12 +8,19 @@ function Tools() {
 			description: "Convert audio to DFPWMA",
 			href: "/tools/audio2dfpwma",
 		},
+		{
+			name: "JVM Flags",
+			description: "Choose the best JVM flags for your server and client",
+			href: "/tools/flags",
+		},
 	]
 
 	return (
-		<div>
-			<p className='text-center text-3xl my-6'>Available Tools</p>
-			<ToolContainer items={tools} />
+		<div className='w-full'>
+			<div className='my-6'>
+				<p className='text-center text-3xl mb-6'>Available Tools</p>
+				<ToolContainer items={tools} />
+			</div>
 		</div>
 	)
 }

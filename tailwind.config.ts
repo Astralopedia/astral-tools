@@ -17,9 +17,9 @@ const config: Config = {
 		nextui(),
 		iconsPlugin({
 			collections: getIconCollections([
-				"simple-icons",
-				"lucide",
 				"fa6-solid",
+				"fa6-regular",
+				"fa6-brands",
 			]),
 		}),
 	],

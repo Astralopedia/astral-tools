@@ -4,9 +4,9 @@ import { ToolItemType } from "@/components/ToolItem"
 function Tools() {
 	const tools: ToolItemType[] = [
 		{
-			name: "Audio to DFPWMA converter",
-			description: "Convert audio to DFPWMA",
-			href: "/tools/audio2dfpwma",
+			name: "Audio to DFPWM converter",
+			description: "Convert audio to DFPWM",
+			href: "/tools/audio2dfpwm",
 		},
 		{
 			name: "JVM Flags",

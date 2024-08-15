@@ -70,7 +70,10 @@ export default function Flags() {
 					<p className='text-center text-3xl'>JVM Flags</p>
 					<p className='text-center text-md font-light'>
 						JVM flags for client?{" "}
-						<Link color='secondary' className='cursor-pointer my-1'>
+						<Link
+							color='secondary'
+							href='https://wiki.astral-chan.xyz/docs/guides/optimization/JVM'
+							className='cursor-pointer my-1'>
 							Go here
 						</Link>
 					</p>

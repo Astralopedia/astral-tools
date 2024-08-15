@@ -1,6 +1,6 @@
 "use client"
 
-import cn from "@/utils/cn"
+import { cn } from "@nextui-org/react"
 import React, {
 	RefObject,
 	useCallback,

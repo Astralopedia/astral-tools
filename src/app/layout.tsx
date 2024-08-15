@@ -3,6 +3,7 @@ import NavBar from "@/components/NavBar"
 import Providers from "@/components/Providers"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { Toaster } from "sonner"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -24,6 +25,7 @@ export default function RootLayout({
 					<NavBar />
 					{children}
 					<Footer />
+					<Toaster position='top-right' richColors theme='dark' />
 				</Providers>
 			</body>
 		</html>

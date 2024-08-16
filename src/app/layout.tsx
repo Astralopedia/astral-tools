@@ -25,7 +25,14 @@ export default function RootLayout({
 					<NavBar />
 					{children}
 					<Footer />
-					<Toaster position='top-right' richColors theme='dark' />
+					<Toaster
+						position='top-right'
+						richColors
+						theme='dark'
+						expand={true}
+						visibleToasts={100}
+					/>{" "}
+					{/* 100 visible toasts :skull: */}
 				</Providers>
 			</body>
 		</html>

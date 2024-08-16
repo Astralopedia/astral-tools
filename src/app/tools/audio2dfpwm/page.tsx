@@ -13,10 +13,6 @@ export default function Audio2DFPWM() {
 	function handleSubmit() {
 		Promise.all(
 			files.map(async file => {
-				if (file.size == 0) {
-					toast.error("File is empty")
-					return
-				}
 				try {
 					const buffer = await convertAudio(await file.arrayBuffer())
 					const blob = new Blob([buffer], {

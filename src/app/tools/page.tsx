@@ -13,6 +13,11 @@ function Tools() {
 			description: "Choose the best JVM flags for your server and client",
 			href: "/tools/flags",
 		},
+		{
+			name: "File Storage",
+			description: "Keep your files in the cloud forever",
+			href: "/tools/file-storage",
+		},
 	]
 
 	return (

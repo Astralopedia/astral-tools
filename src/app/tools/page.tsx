@@ -18,6 +18,11 @@ function Tools() {
 			description: "Keep your files in the cloud forever",
 			href: "/tools/file-storage",
 		},
+		{
+			name: "Down Detector",
+			description: "Is this server down?",
+			href: "/tools/down-detector",
+		},
 	]
 
 	return (

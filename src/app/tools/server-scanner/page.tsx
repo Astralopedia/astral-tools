@@ -9,17 +9,22 @@ export default async function DownDetector({
 }: {
 	searchParams: SearchParams
 }) {
-	const { ip } = searchParamsCache.parse(searchParams)
+	const { ip, java } = searchParamsCache.parse(searchParams)
 
-	const { result: serverStatus, error } = await getServerStatus(ip) // ip can be empty cuz "ip="
+	const { result: serverStatus, error } = await getServerStatus(
+		ip,
+		java ? "java" : "bedrock",
+	)
 
 	return (
 		<div className='w-full'>
 			<div className='my-6'>
 				<div className='mb-6'>
-					<p className='text-center text-3xl'>Down Detector</p>
+					<p className='text-center text-3xl'>
+						Minecraft Server Scanner
+					</p>
 					<p className='text-center text-md font-light'>
-						Check if a server is down
+						Get the status of any Minecraft server
 					</p>
 				</div>
 				<div className='h-full mx-auto w-11/12'>
@@ -63,6 +68,7 @@ function ServerInfo({
 		gamemode,
 		eula_blocked,
 		players,
+		serverid,
 	},
 }: {
 	data: ServerStatus
@@ -105,10 +111,15 @@ function ServerInfo({
 						</Snippet>
 					) ?? "Unknown"}
 					{(
-						<Snippet symbol='IP:' hideCopyButton>
+						<Snippet symbol='IP:'>
 							{ip}
 						</Snippet>
 					) ?? "Unknown"}
+					{serverid ? (
+						<Snippet symbol='Server ID:'>
+							{serverid}
+						</Snippet>
+					) : null}
 					{(
 						<Snippet symbol='Version:' hideCopyButton>
 							{version}

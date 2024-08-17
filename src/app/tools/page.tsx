@@ -19,9 +19,9 @@ function Tools() {
 			href: "/tools/file-storage",
 		},
 		{
-			name: "Down Detector",
-			description: "Is this server down?",
-			href: "/tools/down-detector",
+			name: "Server Scanner",
+			description: "Get the status of any Minecraft server",
+			href: "/tools/server-scanner",
 		},
 	]
 

@@ -94,6 +94,12 @@ export default async function Footer() {
 								target='_blank'>
 								License
 							</Link>
+							<Link
+								href='https://health.astral-chan.xyz'
+								className='text-gray-300 hover:text-[#C88CF2]'
+								target='_blank'>
+								Status
+							</Link>
 						</div>
 					</div>
 				</div>

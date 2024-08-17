@@ -10,7 +10,11 @@ export default async function DownDetector({
 	searchParams: SearchParams
 }) {
 	const { ip } = searchParamsCache.parse(searchParams)
-	const serverStatus = await getServerStatus(ip)
+
+	const { result: serverStatus, error } = await getServerStatus(
+		ip ?? "0.0.0.0:25565",
+	) // ip can be empty cuz "ip="
+
 	return (
 		<div className='w-full'>
 			<div className='my-6'>
@@ -24,7 +28,25 @@ export default async function DownDetector({
 					<div className='max-w-5xl mx-auto'>
 						<ServerIPInput />
 						<div className='border border-divider rounded-xl mt-6 bg-neutral-900'>
-							<ServerInfo data={serverStatus} />
+							{error ? (
+								<div className='p-6'>
+									<Tooltip
+										content='Cannot connect to API, please try again later'
+										color='secondary'>
+										<p className='inline-flex gap-1 items-center justify-center'>
+											<span className='font-semibold'>
+												API status:{" "}
+											</span>
+											<span className='inline-flex gap-1 items-center justify-center'>
+												<i className='i-fa6-solid-circle text-danger'></i>
+												Offline
+											</span>
+										</p>
+									</Tooltip>
+								</div>
+							) : (
+								<ServerInfo data={serverStatus!} />
+							)}
 						</div>
 					</div>
 				</div>

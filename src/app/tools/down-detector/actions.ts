@@ -24,10 +24,34 @@ export type ServerStatus = {
 	eula_blocked?: boolean
 }
 
-export async function getServerStatus(ip: string): Promise<ServerStatus> {
-	return (await (
-		await fetch(
-			`https://api.mcsrvstat.us/3/${ip.length === 0 ? "0.0.0.0:25565" : ip}`,
-		)
-	).json()) as ServerStatus
+type ServerStatusResponse = {
+	result?: ServerStatus
+	error?: Error
+}
+
+export async function getServerStatus(
+	ip: string,
+): Promise<ServerStatusResponse> {
+	try {
+		const result = await await fetch(`https://api.mcsrvstat.us/3/${ip}`)
+
+		if (!result.ok) {
+			return {
+				result: undefined,
+				error: new Error("Server is offline"),
+			} as ServerStatusResponse
+		}
+
+		const data = (await result.json()) as ServerStatus
+
+		return {
+			result: data,
+			error: undefined,
+		}
+	} catch (error) {
+		return {
+			result: undefined,
+			error: error as Error,
+		}
+	}
 }

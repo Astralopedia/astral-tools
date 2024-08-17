@@ -1,52 +1,52 @@
 "use client"
 
 import { Button, Input } from "@nextui-org/react"
+import { useFormik } from "formik"
 import { useQueryState } from "nuqs"
-import { useState } from "react"
 import { toast } from "sonner"
 import { searchParams } from "../app/tools/down-detector/searchParams"
 
 export default function ServerIPInput() {
-	const [ip, setIP] = useState<string>("")
-	const [qIp, setQIp] = useQueryState(
+	const [ip, setIp] = useQueryState(
 		"ip",
 		searchParams.ip.withOptions({ shallow: false }),
 	)
 
-	function validateBeforeChange() {
-		const splittedIP = ip.split(":")
+	const formik = useFormik({
+		initialValues: {
+			ip: ip,
+		},
+		onSubmit: values => {
+			if (!values.ip) {
+				toast.error("IP is required")
+				return
+			}
 
-		if (splittedIP[0].length === 0) {
-			toast.error("IP is required")
-			return
-		}
+			if (values.ip.split(":").length === 1) {
+				setIp(`${values.ip}:25565`)
+				return
+			}
 
-		if (splittedIP.length === 1) {
-			setQIp(splittedIP.concat("25565").join(":"))
-			return
-		}
-
-		setQIp(splittedIP.join(":"))
-	}
+			setIp(values.ip)
+		},
+	})
 
 	return (
-		<div className='inline-flex w-full gap-3 justify-center items-center'>
+		<form
+			onSubmit={formik.handleSubmit}
+			className='inline-flex w-full gap-3 justify-center items-center'>
 			<Input
 				type='text'
 				name='ip'
 				placeholder='Server IP'
 				className='w-full bg-neutral-900'
 				size='lg'
-				onChange={e => setIP(e.target.value)}
-				defaultValue={qIp}
+				onChange={formik.handleChange}
+				value={formik.values.ip}
 			/>
-			<Button
-				onClick={() => validateBeforeChange()}
-				color='secondary'
-				size='lg'
-				className=''>
+			<Button type='submit' color='secondary' size='lg' className=''>
 				Check
 			</Button>
-		</div>
+		</form>
 	)
 }

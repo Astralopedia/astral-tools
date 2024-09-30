@@ -2,36 +2,37 @@
 
 import { useEffect, useState } from "react"
 
+interface TimeLeft {
+	days: number
+	hours: number
+	minutes: number
+	seconds: number
+}
+
 const Countdown = () => {
-	const targetDate: Date = new Date("October 1, 2024 01:00:00")
-	const [timeLeft, setTimeLeft] = useState({
+	const targetDate = new Date("October 1, 2024 01:00:00")
+
+	const [timeLeft, setTimeLeft] = useState<TimeLeft>({
 		days: 0,
 		hours: 0,
 		minutes: 0,
 		seconds: 0,
 	})
 
-	const calculateTimeLeft = () => {
-		const now: Date = new Date()
-		const difference = targetDate - now
-
-		let timeRemaining = {
-			days: 0,
-			hours: 0,
-			minutes: 0,
-			seconds: 0,
-		}
+	const calculateTimeLeft = (): TimeLeft => {
+		const now = new Date()
+		const difference = targetDate.getTime() - now.getTime()
 
 		if (difference > 0) {
-			timeRemaining = {
+			return {
 				days: Math.floor(difference / (1000 * 60 * 60 * 24)),
 				hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
 				minutes: Math.floor((difference / 1000 / 60) % 60),
 				seconds: Math.floor((difference / 1000) % 60),
 			}
+		} else {
+			return { days: 0, hours: 0, minutes: 0, seconds: 0 }
 		}
-
-		return timeRemaining
 	}
 
 	useEffect(() => {
@@ -39,7 +40,6 @@ const Countdown = () => {
 			setTimeLeft(calculateTimeLeft())
 		}, 1000)
 
-		// Cleanup on unmount
 		return () => clearInterval(timer)
 	}, [])
 

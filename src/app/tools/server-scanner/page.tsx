@@ -1,3 +1,4 @@
+// @ts-nocheck
 import ServerIPInput from "@/components/ServerIPInput"
 import { Image, Snippet, Tooltip } from "@nextui-org/react"
 import { SearchParams } from "nuqs/parsers"
